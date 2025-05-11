@@ -20,7 +20,13 @@ While commercial systems like Epic and Cerner offer built-in analytics, this pro
 
 ## PROJECT COMPONENTS
 
-This table stores discharge-related outcome information for each patient encounter. It is used to analyze post-encounter disposition (e.g., home, rehab, expired).
+# Component	             # Script(s) / Files
+Database Implementation	 process_data.py, load_data.py
+Bash Shell Script	     run.sh
+Python Visualization	 app.py (Streamlit dashboard)
+
+
+
 
 ### SQL DDL:
 
