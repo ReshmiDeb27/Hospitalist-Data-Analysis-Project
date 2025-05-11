@@ -33,6 +33,6 @@ sqlite3 ../hospital.db < ../Scripts/load_data.sql
 echo "Data pipeline complete. Launching Streamlit dashboard..."
 
 # Step 7: Run Streamlit dashboard
-streamlit run Scripts/app.py
+streamlit run app.py
 
 

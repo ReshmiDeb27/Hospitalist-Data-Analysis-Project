@@ -1,9 +1,14 @@
--- Drop tables if they exist
+#!/bin/bash
+
+# Set database file
+DB="hospital_data.db"
+
+# Drop and recreate tables
+sqlite3 $DB <<EOF
 DROP TABLE IF EXISTS PERSON;
 DROP TABLE IF EXISTS ENCOUNTER;
 DROP TABLE IF EXISTS OUTCOME;
 
--- Create PERSON table
 CREATE TABLE PERSON (
     PATIENT_ID VARCHAR(100),
     ENCOUNTER_ID VARCHAR(100),
@@ -12,7 +17,6 @@ CREATE TABLE PERSON (
     PATIENT_TYPE VARCHAR(80)
 );
 
--- Create ENCOUNTER table
 CREATE TABLE ENCOUNTER (
     ENCOUNTER_ID VARCHAR(100),
     FACILITY VARCHAR(80),
@@ -22,17 +26,31 @@ CREATE TABLE ENCOUNTER (
     DISCHARGE_DT_TM CHAR(25)
 );
 
--- Create OUTCOME table
 CREATE TABLE OUTCOME (
     ENCOUNTER_ID VARCHAR(100),
     DISCHARGE_DISPOSITION VARCHAR(80)
 );
+EOF
 
--- Set mode to CSV (only works in SQLite CLI)
-.mode csv
-.headers on
+# Insert data from person.csv
+tail -n +2 input/person.csv | while IFS=',' read -r PATIENT_ID ENCOUNTER_ID BIRTH_DATE GENDER PATIENT_TYPE
+do
+  sqlite3 $DB "INSERT INTO PERSON VALUES (
+    '$PATIENT_ID', '$ENCOUNTER_ID', '$BIRTH_DATE', '$GENDER', '$PATIENT_TYPE');"
+done
 
--- Import CSV data (update paths as needed)
-.import 'input/person.csv' PERSON
-.import 'input/encounter.csv' ENCOUNTER
-.import 'input/outcome.csv' OUTCOME
+# Insert data from encounter.csv
+tail -n +2 input/encounter.csv | while IFS=',' read -r ENCOUNTER_ID FACILITY UNIT ADMIT_SOURCE ADMIT_DT_TM DISCHARGE_DT_TM
+do
+  sqlite3 $DB "INSERT INTO ENCOUNTER VALUES (
+    '$ENCOUNTER_ID', '$FACILITY', '$UNIT', '$ADMIT_SOURCE', '$ADMIT_DT_TM', '$DISCHARGE_DT_TM');"
+done
+
+# Insert data from outcome.csv
+tail -n +2 input/outcome.csv | while IFS=',' read -r ENCOUNTER_ID DISCHARGE_DISPOSITION
+do
+  sqlite3 $DB "INSERT INTO OUTCOME VALUES (
+    '$ENCOUNTER_ID', '$DISCHARGE_DISPOSITION');"
+done
+
+echo "Data inserted successfully into $DB."
