@@ -20,10 +20,9 @@ While commercial systems like Epic and Cerner offer built-in analytics, this pro
 
 ## PROJECT COMPONENTS
 
-Component	             Script(s) / Files
-Database Implementation	 process_data.py, load_data.py
-Bash Shell Script	     run.sh
-Python Visualization	 app.py (Streamlit dashboard)
+Database Implementation: process_data.py, load_data.py; Bash Shell Script: run.sh; Python Visualization: app.py (Streamlit dashboard)
+
+
 
 
 
