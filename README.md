@@ -1,33 +1,24 @@
-## Database Table: PERSON
+## Title
 
-This table was created in the Snowflake schema `RESHMI_DB.DASHBOARD_DATA` to store patient demographic and encounter information used in the project.
+Hospitalist Dashboard: A Data-Driven Tool for Analyzing Patient Flow, Outcomes, and Readmission Risk. 
 
-### SQL DDL:
+### ABSTRACT/PURPOSE
 
-CREATE OR REPLACE TABLE RESHMI_DB.DASHBOARD_DATA.PERSON (
-    PATIENT_ID VARCHAR(16777216),
-    ENCOUNTER_ID VARCHAR(400),
-    BIRTH_DATE TIMESTAMP_NTZ(9),
-    GENDER VARCHAR(80),
-    PATIENT_TYPE VARCHAR(80)
-);
+The interactive dashboard is developed with the goal of helping the clinical administrators and hospitalists to improve patient care. The dashboard presents understandable overview of patient demographics, length of stay, discharge outcomes, and readmission risks trends, created with the patient data that is similar to EHR-derived csv files. The project facilitates real-time monitoring to support data-driven decision making by combining Bash, MySQL and Python based visualization tool (streamlit). The dashboard provides trends by age group and gender, highlighting patterns in hospital stay durations and outcome distributions that can be used to improve discharge planning and reduce readmission rates.
 
-## Database Table: ENCOUNTER
+## PROJECT OBJECTIVES / GOALS
 
-This table was created in the Snowflake schema `RESHMI_DB.DASHBOARD_DATA` to store information about patient hospital encounters, including admission and discharge timestamps.
+1. Developed a pipeline that can transform, laod and analyze the patient data into a structured database.
+2. Built a reproducible Bash-based workflow that runs the pipeline and launches the dashboard.
+3. Designed a Streamlit dashboard with python and SQL that visualizes patient statistics, filtered by age group and time range.
 
-### SQL DDL:
+### BACKGROUND
 
-CREATE OR REPLACE TABLE RESHMI_DB.DASHBOARD_DATA.ENCOUNTER (
-    ENCOUNTER_ID VARCHAR(400),
-    FACILITY VARCHAR(80),
-    UNIT VARCHAR(80),
-    ADMIT_SOURCE VARCHAR(80),
-    ADMIT_DT_TM TIMESTAMP_LTZ(9),
-    DISCHARGE_DT_TM TIMESTAMP_LTZ(9)
-);
+The hospitals unplanned readmissions within a few weeks of discharge has been a concern among hospitals due to increasing cost and their impact on patient outcomes. Hence, hospitalists need a timely and easy access to the patients data to improve discharge planning, resource allocation, and care coordination.
+The lack of tools to analyze patient-level summary data in a user-friendly interface despite widespread utilization of EHR systems, especially at smaller clinics may hinder timely decision-making. This dashboard bridges that gap using open-source tools.
+While commercial systems like Epic and Cerner offer built-in analytics, this project offers a lightweight, modular, and fully open-source alternative tailored for teaching and small research projects. Unlike general-purpose dashboards, this one focuses on key metrics important to hospitalists and supports data filtering by patient age group and date.
 
-## Database Table: OUTCOME
+## PROJECT COMPONENTS
 
 This table stores discharge-related outcome information for each patient encounter. It is used to analyze post-encounter disposition (e.g., home, rehab, expired).
 
