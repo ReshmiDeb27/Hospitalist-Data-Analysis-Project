@@ -4,7 +4,7 @@ import altair as alt
 
 st.title("🏥 Hospital Patient Analysis Dashboard")
 
-df = pd.read_csv('data/processed_data.csv')
+df = pd.read_csv('/workspaces/Hospitalist-Data-Analysis-Project/output/summary.csv/cleaned_patient_data.csv')
 
 # Sidebar filters
 age_groups = df['age_group'].unique()
