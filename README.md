@@ -142,6 +142,10 @@ Dashboard: Visual analysis with filters and trends
 
 This project uses synthetic, de-identified datasets meant only for educational purposes. No real patient data is included.
 
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
 ## Author
 
 Reshmi Deb
