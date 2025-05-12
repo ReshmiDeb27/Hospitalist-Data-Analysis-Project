@@ -30,7 +30,7 @@ Create a MySQL database named: hospital_data.db
 
 Update credentials in Scripts/load_data.py:
 
-conn = mysql.connector.connect(
+<pre> ```sql conn = mysql.connector.connect(
 
     host="localhost",
     
@@ -40,7 +40,7 @@ conn = mysql.connector.connect(
     
     database="hospital_data"
     
-)
+)``` </pre>
 
 ## 3. Run the Full Pipeline
 <pre> ```bash chmod +x run.sh
