@@ -21,9 +21,9 @@ app.py with Streamlit
 # Setup Instructions
 
 ## 1. Clone the Repository
-<pre> ```python git clone https://github.com/ReshmiDeb27/Hospitalist-Data-Analysis-Project.git``` </pre>
+<pre> ```python git clone https://github.com/ReshmiDeb27/Hospitalist-Data-Analysis-Project.git
 
-cd Hospitalist-Data-Analysis-Project
+cd Hospitalist-Data-Analysis-Project``` </pre>
 
 ## 2. Configure MySQL
 Create a MySQL database named: hospital_data.db
