@@ -106,27 +106,49 @@ The Streamlit dashboard provides:
 
 <pre> ```bash #!/bin/bash
 
-# Step 1: Upgrade pip and install dependencies
+# Step 1: Update pip and install necessary project dependencies from requirements.txt for dashboard
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# Step 2: Create necessary folders
+# Step 2: Create input/output folders to support data flow and file management
 mkdir -p ../input ../output
 
-# Step 3: Copy data files
+# Step 3: Place data files in the input path to prepare for analysis
 cp ../Data/person.csv ../input/
 cp ../Data/encounter.csv ../input/
 cp ../Data/outcome.csv ../input/
 
-# Step 4: Run data processing script
-echo "Running data processing script..."
+# Step 4: Run the script in the input files to preprocess raw data and produce cleaned data for further use
+echo "Running data processing script"
 python3 Scripts/process_data.py ../input/person.csv ../input/encounter.csv ../input/outcome.csv ../output/summary.csv
 
-# Step 5: Load processed data into MySQL
-echo "Loading data into MySQL..."
+# Step 5: Load the cleaned and processed data into the MySQL database for storage and querying
+echo "Loading data into MySQL"
 python3 Scripts/load_to_mysql.py
 
-# Step 6: Launch dashboard
-echo "Launching dashboard..."
+# Step 6: Launch the interactive dashboard to review metrics and trends
+echo "Launching dashboard"
 streamlit run Dashboard/app.py``` </pre>
+
+## Sample Output
+
+summary.csv: Cleaned data with fields like age_group, admission_date, length_of_stay
+
+MySQL Tables: Structured patient encounter data
+
+Dashboard: Visual analysis with filters and trends
+
+## Data Privacy
+
+This project uses synthetic, de-identified datasets meant only for educational purposes. No real patient data is included.
+
+## Author
+
+Reshmi Deb
+
+MS in Biomedical Informatics
+
+University of Nebraska Omaha
+
+Rdeb@unomaha.edu
 
