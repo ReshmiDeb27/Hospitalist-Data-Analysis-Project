@@ -3,17 +3,17 @@ from tkinter import INSERT
 import pandas as pd
 import sqlite3
 
-# Connect to SQLite (it will create the DB file if not present)
+# Connect to SQLite, which creates a new database file if one isn't already present
 conn = sqlite3.connect("hospital_data.db")
 cursor = conn.cursor()
 
-# Drop existing tables if they exist
+# Deletes old tables creating fresh ones during setup to avoid conflict
 cursor.execute("DROP TABLE IF EXISTS PERSON")
 cursor.execute("DROP TABLE IF EXISTS ENCOUNTER")
 cursor.execute("DROP TABLE IF EXISTS OUTCOME")
 cursor.execute("DROP TABLE IF EXISTS summary")
 
-# Create PERSON table
+# Define the PERSON table schema for storing basic patient information
 cursor.execute("""
     CREATE TABLE PERSON (
         PATIENT_ID TEXT,
@@ -24,7 +24,7 @@ cursor.execute("""
     )
 """)
 
-# Create ENCOUNTER table
+# Create an ENCOUNTER table to store information related to individual patient visits, locations, and timestamps
 cursor.execute("""
     CREATE TABLE ENCOUNTER (
         ENCOUNTER_ID TEXT,
@@ -36,7 +36,7 @@ cursor.execute("""
     )
 """)
 
-# Create OUTCOME table
+# Create an OUTCOME table for recording discharge status and patient exit information
 cursor.execute("""
     CREATE TABLE OUTCOME (
         ENCOUNTER_ID TEXT,
@@ -44,7 +44,7 @@ cursor.execute("""
     )
 """)
 
-# Create summary table
+# Create the SUMMARY table to store aggregated patient metrics for reporting and analysis
 cursor.execute("""
     CREATE TABLE summary (
         admit_month TEXT,
@@ -54,8 +54,7 @@ cursor.execute("""
     )
 """)
 
-# Load and insert summary data from CSV
-
+# Load PERSON data from the CSV file and insert it into the PERSON table in the database
 cursor.executescript("""
 INSERT INTO PERSON VALUES
 ('P001', 'E001', '14-03-2005', 'Male', 'Inpatient'),
@@ -121,6 +120,7 @@ INSERT INTO PERSON VALUES
 ('P061', 'E061', '26-02-1968', 'Male', 'Outpatient');
 """)
 
+# Load ENCOUNTER data from the CSV file and insert it into the ENCOUNTER table in the database
 cursor.executescript("""
 INSERT INTO ENCOUNTER VALUES
 ('E001', 'Community Hospital', 'General Ward', 'ER', '27-10-2024 02:25', '06-11-2024 12:25'),
@@ -225,6 +225,7 @@ INSERT INTO ENCOUNTER VALUES
 ('E100', 'Community Hospital', 'ICU', 'Referral', '11-05-2024 01:27', '21-05-2024 06:27');
 """)
 
+# Load OUTCOME data from the CSV file and insert it into the OUTCOME table in the database
 cursor.executescript("""
 INSERT INTO OUTCOME VALUES
 ('E001', 'Expired'),
@@ -329,7 +330,7 @@ INSERT INTO OUTCOME VALUES
 ('E100', 'Expired');
 """)
                             
-# Commit and close
+# Commit inserted data and safely close the database connection
 conn.commit()
 cursor.close()
 conn.close()
