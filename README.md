@@ -40,7 +40,7 @@ Update credentials in Scripts/load_data.py:
     
     database="hospital_data"
     
-)```
+)
 
 ## 3. Run the Full Pipeline
 chmod +x run.sh
