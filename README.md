@@ -1,8 +1,5 @@
 # Hospitalist Data Analysis Dashboard
 
-## Live Streamlit App
-[Click here to explore the live dashboard](https://ideal-space-palm-tree-4jgx6j6pw9vq3jpp6-8501.app.github.dev/#average-patients-seen-per-hospitalist-per-day)
-
 ## Project Overview
 This project is a full-stack data analysis pipeline for hospital patient records. It allows users to process, store, and visualize hospital encounters using a combination of:
 
