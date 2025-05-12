@@ -27,8 +27,8 @@ cd Hospitalist-Data-Analysis-Project
 
 ## 2. Configure MySQL
 Create a MySQL database named: hospital_data.db
-Update credentials in Scripts/load_to_mysql.py:
 
+Update credentials in Scripts/load_to_mysql.py:
 
 conn = mysql.connector.connect(
     
