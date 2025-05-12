@@ -28,12 +28,33 @@ cd Hospitalist-Data-Analysis-Project
 ## 2. Configure MySQL
 Create a MySQL database named: hospital_data.db
 
-Update credentials in Scripts/load_to_mysql.py:
+Update credentials in Scripts/load_data.py:
 
 conn = mysql.connector.connect(
+
     host="localhost",
+    
     user="root",
+    
     password="your_password",
+    
     database="hospital_data"
+    
 )
 
+## 3. Run the Full Pipeline
+chmod +x run.sh
+
+./run.sh
+
+This script will:
+
+Install dependencies
+
+Copy raw CSVs to input folder
+
+Process & clean data via process_data.py
+
+Create and populate MySQL tables via load_data.py
+
+Launch the Streamlit dashboard
