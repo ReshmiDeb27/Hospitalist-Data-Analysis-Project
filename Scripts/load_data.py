@@ -1,5 +1,5 @@
+# Import modules
 from pickle import PERSID
-from tkinter import INSERT
 import pandas as pd
 import sqlite3
 
