@@ -43,8 +43,6 @@ conn = mysql.connector.connect(
 )
 
 ## 3. Run the Full Pipeline
-command:
-
 chmod +x run.sh
 
 ./run.sh
