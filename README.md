@@ -29,6 +29,7 @@ cd Hospitalist-Data-Analysis-Project
 Create a MySQL database named: hospital_data.db
 Update credentials in Scripts/load_to_mysql.py:
 
+
 conn = mysql.connector.connect(
     
     host="localhost",
