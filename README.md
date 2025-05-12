@@ -47,7 +47,7 @@ chmod +x run.sh
 
 ./run.sh
 
-This script:
+This script will:
 
 Install dependencies
 
@@ -101,3 +101,32 @@ The Streamlit dashboard provides:
     Charts for average length of stay by age/gender
 
     Line plots showing admission/discharge trends
+
+### Bash Script: run.sh
+
+#!/bin/bash
+
+# Step 1: Upgrade pip and install dependencies
+pip install --upgrade pip
+pip install -r requirements.txt
+
+# Step 2: Create necessary folders
+mkdir -p ../input ../output
+
+# Step 3: Copy data files
+cp ../Data/person.csv ../input/
+cp ../Data/encounter.csv ../input/
+cp ../Data/outcome.csv ../input/
+
+# Step 4: Run data processing script
+echo "Running data processing script..."
+python3 Scripts/process_data.py ../input/person.csv ../input/encounter.csv ../input/outcome.csv ../output/summary.csv
+
+# Step 5: Load processed data into MySQL
+echo "Loading data into MySQL..."
+python3 Scripts/load_to_mysql.py
+
+# Step 6: Launch dashboard
+echo "Launching dashboard..."
+streamlit run Dashboard/app.py
+
