@@ -43,9 +43,9 @@ conn = mysql.connector.connect(
 )
 
 ## 3. Run the Full Pipeline
-```chmod +x run.sh
+<pre> ```bash chmod +x run.sh
 
-./run.sh
+./run.sh``` </pre>
 
 This script will:
 
