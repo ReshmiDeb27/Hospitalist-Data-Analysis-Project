@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Step 1: Update pip and install necessary project dependencies from requirements.txt for dashboard
-pip3 install --quiet -r ../requirements.txt
+pip3 install -r ../requirements.txt
 pip3 install --upgrade pip
 
 # Step 2: Create input/output folders to support data flow and file management
