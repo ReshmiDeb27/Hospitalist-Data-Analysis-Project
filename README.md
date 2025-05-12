@@ -47,7 +47,7 @@ chmod +x run.sh
 
 ./run.sh
 
-This script will:
+This script:
 
 Install dependencies
 
