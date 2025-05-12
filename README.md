@@ -1,7 +1,7 @@
 # Hospitalist Data Analysis Dashboard
 
 ## Project Overview
-This project is a **full-stack data analysis pipeline** for hospital patient records. It allows users to process, store, and visualize hospital encounters using a combination of:
+This project is a full-stack data analysis pipeline for hospital patient records. It allows users to process, store, and visualize hospital encounters using a combination of:
 
 - Python for data processing
 - MySQL for structured storage
@@ -12,16 +12,11 @@ It is designed to help hospitalists and care teams analyze patient flow, admissi
 
 ## Scripts
 ### Database Implementation 
-Scripts: process_data.py, load_data.py
+process_data.py, load_data.py
 ### Bash Shell Automation 
-Script: run.sh
+run.sh
 ### Python Visualization
 app.py with Streamlit
-
-
-
-
-
 
 # Setup Instructions
 
@@ -30,5 +25,13 @@ git clone https://github.com/ReshmiDeb27/Hospitalist-Data-Analysis-Project.git
 
 cd Hospitalist-Data-Analysis-Project
 
-## 2. Install Dependencies
-pip install -r requirements.txt
+## 2. Configure MySQL
+Create a MySQL database named: hospital_data.db
+Update credentials in Scripts/load_to_mysql.py:
+
+conn = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="your_password",
+    database="hospital_data"
+)
