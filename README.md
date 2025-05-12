@@ -30,7 +30,7 @@ Create a MySQL database named: hospital_data.db
 
 Update credentials in Scripts/load_data.py:
 
-<pre> ```sql conn = mysql.connector.connect(
+<pre> ```python conn = mysql.connector.connect(
 
     host="localhost",
     
@@ -104,7 +104,7 @@ The Streamlit dashboard provides:
 
 ### Bash Script: run.sh
 
-#!/bin/bash
+<pre> ```bash #!/bin/bash
 
 # Step 1: Upgrade pip and install dependencies
 pip install --upgrade pip
@@ -128,5 +128,5 @@ python3 Scripts/load_to_mysql.py
 
 # Step 6: Launch dashboard
 echo "Launching dashboard..."
-streamlit run Dashboard/app.py
+streamlit run Dashboard/app.py``` </pre>
 
