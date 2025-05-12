@@ -30,8 +30,12 @@ Create a MySQL database named: hospital_data.db
 Update credentials in Scripts/load_to_mysql.py:
 
 conn = mysql.connector.connect(
+    
     host="localhost",
+    
     user="root",
+    
     password="your_password",
+    
     database="hospital_data"
 )
