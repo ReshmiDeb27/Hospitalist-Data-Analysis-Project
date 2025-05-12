@@ -58,3 +58,46 @@ Process & clean data via process_data.py
 Create and populate MySQL tables via load_data.py
 
 Launch the Streamlit dashboard
+
+## Details of Each Component
+### Scripts/process_data.py
+
+This script:
+
+    Loads person.csv, encounter.csv, outcome.csv
+
+    Merges them based on ENCOUNTER_ID
+
+    Calculates derived fields like:
+
+        Length of stay
+
+        Admission month
+
+        Age group
+
+    Outputs the cleaned data to output/summary.csv
+
+### Scripts/load_to_mysql.py
+
+This script:
+
+    Connects to your MySQL server
+
+    Creates tables: PERSON, ENCOUNTER, and OUTCOME
+
+    Loads summary.csv into a new table (e.g., SUMMARY)
+
+    Apply proper schema and datatypes
+
+### app.py
+
+The Streamlit dashboard provides:
+
+    Sidebar filters (age, gender, facility, dates)
+
+    Data Table view
+
+    Charts for average length of stay by age/gender
+
+    Line plots showing admission/discharge trends
